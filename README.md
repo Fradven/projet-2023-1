@@ -1,1 +1,1 @@
-# projet-2023-1
+# Good Sound (school project)
