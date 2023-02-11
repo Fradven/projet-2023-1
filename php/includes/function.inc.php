@@ -1,10 +1,4 @@
 <?php
-//filter for different page to see if there are no code injection
-function filterdName($name)
-{
-    $newstr = filter_var($name, FILTER_SANITIZE_STRING);
-    return $newstr;
-}
 
 function login($username, $pwd, $rememberMe) {
     $filename = "..".DIRECTORY_SEPARATOR."json".DIRECTORY_SEPARATOR."user.json";
@@ -15,17 +9,14 @@ function login($username, $pwd, $rememberMe) {
     
     foreach($liste as $user) {
         if ($user["username"] == $username && $user["password"] == $pwd) {
-            session_start();
-            $_SESSION["id_user"] = $_POST["id"];
-            echo json_encode(array("user" => $user),true);
+            echo json_encode(array('user' => $user), true);
+            exit;
         }
-        else 
-            echo json_encode(array("error" => "Action impossible"), true);
 
         if ($rememberMe) {
-            setcookie("id_user",$_POST["id"], time()+(60*60));
-            echo json_encode(array("user" => $user),true);
         }
+        
     }
+    echo json_encode(array("error" => "Action impossible"), true);
 
 }
