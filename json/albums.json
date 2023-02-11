@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "In the Court of the Crimson King",
+    "cover":"../images/cover/in_the_court_of_the_crimson,_king.jpeg",
+    "artist": "King Crimson",
+    "genre": ["progressive rock"],
+    "description": "In the Court of the Crimson King (subtitled An Observation by King Crimson) is the debut studio album by English rock band King Crimson, released on 10 October 1969 by Island Records. The album is one of the earliest and most influential of the progressive rock genre, where the band combined the musical influences that rock music was founded upon with elements of jazz, classical, and symphonic music.",
+    "quitity": 3
+  },
+  {
+    "id": 2,
+    "name": "In the Wake of Poseidon",
+    "cover":"../images/cover/in_the_wake_of_poseidon.jpeg",
+    "artist": "King Crimson",
+    "genre": ["progressive rock"],
+    "description": "In the Wake of Poseidon is the second studio album by English progressive rock group King Crimson, released in May 1970 by Island Records in Europe, Atlantic Records in the United States, Philips Records in Australia, and Vertigo Records in New Zealand. To date the album is their highest-charting in the UK, reaching number 4.",
+    "quitity": 1
+  }
+]

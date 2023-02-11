@@ -1,0 +1,12 @@
+body {
+    background-color: #181818;
+    color: antiquewhite;
+}
+
+.gold-border {
+    border: 2px solid #bcaa44;
+}
+
+.btn-gold {
+    background-color: #bcaa44;
+}
