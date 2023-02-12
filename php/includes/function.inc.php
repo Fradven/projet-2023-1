@@ -2,9 +2,7 @@
 
 function login($username, $pwd, $rememberMe) {
     $filename = "..".DIRECTORY_SEPARATOR."json".DIRECTORY_SEPARATOR."user.json";
-    
     $contents = file_get_contents($filename);
-    
     $liste = json_decode($contents,true);
     
     foreach($liste as $user) {

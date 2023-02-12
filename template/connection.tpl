@@ -1,4 +1,4 @@
-<div class="col-3 m-auto pt-5">
+<div class="col-3 m-auto pt-5 login-form">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username" name="username" aria-describedby="username" placeholder="Enter username">
@@ -11,5 +11,4 @@
       <input type="checkbox" class="form-check-input" id="rememberMe">
       <label class="form-check-label" for="rememberMe">Remember me</label>
     </div>
-    <button type="submit" class="btn btn-gold submit" value="login" name="login">Login</button>
 </div>
