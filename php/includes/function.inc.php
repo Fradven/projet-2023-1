@@ -7,11 +7,13 @@ function login($username, $pwd, $rememberMe) {
     
     foreach($liste as $user) {
         if ($user["username"] == $username && $user["password"] == $pwd) {
+            $_SESSION["id_user"] = $user["id"];
             echo json_encode(array('user' => $user), true);
-            exit;
-        }
 
-        if ($rememberMe) {
+            if ($rememberMe) {
+            }
+
+            exit;
         }
         
     }
