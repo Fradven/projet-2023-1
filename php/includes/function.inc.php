@@ -15,6 +15,6 @@ function login($username, $pwd, $rememberMe) {
         }
         
     }
-    echo json_encode(array("error" => "Action impossible"), true);
+    echo json_encode(array("error" => "Wrong username or password!"), true);
 
 }
