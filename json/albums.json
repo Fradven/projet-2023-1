@@ -4,7 +4,7 @@
     "name": "In the Court of the Crimson King",
     "cover":"images/cover/in_the_court_of_the_crimson,_king.jpeg",
     "artist": "King Crimson",
-    "genre": ["progressive rock"],
+    "genre": ["progressive rock", "rock"],
     "description": "In the Court of the Crimson King (subtitled An Observation by King Crimson) is the debut studio album by English rock band King Crimson, released on 10 October 1969 by Island Records. The album is one of the earliest and most influential of the progressive rock genre, where the band combined the musical influences that rock music was founded upon with elements of jazz, classical, and symphonic music.",
     "price": "15.99",
     "quitity": 3
@@ -14,9 +14,29 @@
     "name": "In the Wake of Poseidon",
     "cover":"images/cover/in_the_wake_of_poseidon.jpeg",
     "artist": "King Crimson",
-    "genre": ["progressive rock"],
+    "genre": ["progressive rock", "rock"],
     "description": "In the Wake of Poseidon is the second studio album by English progressive rock group King Crimson, released in May 1970 by Island Records in Europe, Atlantic Records in the United States, Philips Records in Australia, and Vertigo Records in New Zealand. To date the album is their highest-charting in the UK, reaching number 4.",
-    "price":"15.99",
+    "price":"8.99",
     "quitity": 1
+  },
+  {
+    "id": 3,
+    "name": "Rumours",
+    "cover":"images/cover/fleetwoodmac-rumours.jpg",
+    "artist": "Fleetwood Mac",
+    "genre": ["soft rock", "pop rock", "rock"],
+    "description": "Recorded with the intention of making 'a pop album' that would expand on the commercial success of their self-titled 1975 album, the music of Rumours is characterized by a mix of electric and acoustic instrumentation, accented rhythms, guitars and keyboards, while its lyrics concern personal and often troubled relationships. Its release was postponed by delays in the mixing process.",
+    "price":"19.99",
+    "quitity": 10
+  },
+  {
+    "id": 4,
+    "name": "Give Me Back My Tears",
+    "cover":"images/cover/dinah-washington-give-me-back-my-tears.jpg",
+    "artist": "Dinah Washington",
+    "genre": ["jazz", "blues", "R&B"],
+    "description": "Dinah Washington (born Ruth Lee Jones; August 29, 1924 - December 14, 1963) was an American singer and pianist, one of the most popular black female recording artists of the 1950s.[1] Primarily a jazz vocalist, she performed and recorded in a wide variety of styles including blues, R&B, and traditional pop music.",
+    "price":"25.99",
+    "quitity": 4
   }
 ]
