@@ -1,36 +1,8 @@
+import {sessionCheck} from "./mainPage"
+
 // fetch login form when the page loads
 $(document).ready(() => {
-  $.post(
-    "php/api.php",
-    { action: "session" },
-    (data) => {
-      if (data.session === "none") {
-        $.post("template/connection.tpl", (data) => {
-          $("main").append(data);
-        });
-      } else {
-        $.post(
-          "php/store.php",
-          { action: "liste" },
-          (albums) => {
-            albums.map((album) => {
-              $("main").append(`
-                <div class="card text-white bg-dark" style="width: 12rem;">
-                    <img class="card-img-top" src=${album.cover} alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">${album.name}</h5>
-                        <p class="card-text">artist: ${album.artist}</p>
-                    </div>
-                </div>
-                `);
-            });
-          },
-          "json"
-        );
-      }
-    },
-    "json"
-  );
+  sessionCheck();
 });
 
 // show login button if username and pqssword input are not empty
@@ -49,7 +21,7 @@ $("main").on("keyup", "input#username, input#pwd", () => {
 $("main").on("click", ".submit", () => {
   let username = $("#username").val().trim();
   let password = $("#pwd").val().trim();
-  let rememberMe = $("#rememberMe").is(":checked");
+  let rememberMe = $("#rememberMe").is(":checked") ? "true" : "false";
 
   $.post(
     "php/api.php",
@@ -100,6 +72,11 @@ $("body").on("click", "div#myModal", () => {
 
 $(".kill-session").click(() => {
   $.post("php/action.php", { action: "kill" }, () => {
+    location.reload();
+  });
+});
+$(".kill-cookie").click(() => {
+  $.post("php/action.php", { action: "cookie" }, () => {
     location.reload();
   });
 });

@@ -5,7 +5,6 @@ function login($username, $pwd, $rememberMe)
     $filename = ".." . DIRECTORY_SEPARATOR . "json" . DIRECTORY_SEPARATOR . "user.json";
     $contents = file_get_contents($filename);
     $liste = json_decode($contents, true);
-    $userID = "";
 
     foreach ($liste as $user) {
         if ($user["username"] == $username && $user["password"] == $pwd) {
@@ -13,7 +12,7 @@ function login($username, $pwd, $rememberMe)
             $_SESSION["id_user"] = $userID;
             echo json_encode(array('user' => $user), true);
 
-            if ($rememberMe) {
+            if ($rememberMe == "true") {
                 setcookie("id_user", $userID, time() + 60);
             }
 
