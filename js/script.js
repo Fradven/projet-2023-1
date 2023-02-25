@@ -1,15 +1,18 @@
 // fetch login form when the page loads
-$(document).ready(function () {
-  $.post("php/api.php", {action: "session"}, function(data) {
+$(document).ready(() => {
+  $.post(
+    "php/api.php",
+    { action: "session" },
+    (data) => {
       if (data.session === "none") {
-        $.post("template/connection.tpl", function (data) {
+        $.post("template/connection.tpl", (data) => {
           $("main").append(data);
         });
       } else {
         $.post(
           "php/store.php",
           { action: "liste" },
-          function (albums) {
+          (albums) => {
             albums.map((album) => {
               $("main").append(`
                 <div class="card text-white bg-dark" style="width: 12rem;">
@@ -25,11 +28,13 @@ $(document).ready(function () {
           "json"
         );
       }
-  }, "json")
+    },
+    "json"
+  );
 });
 
 // show login button if username and pqssword input are not empty
-$("main").on("keyup", "input#username, input#pwd", function () {
+$("main").on("keyup", "input#username, input#pwd", () => {
   let username = $("input#username").val().trim();
   let pwd = $("input#pwd").val().trim();
 
@@ -41,7 +46,7 @@ $("main").on("keyup", "input#username, input#pwd", function () {
 });
 
 // if login is right, fetch store front
-$("main").on("click", ".submit", function () {
+$("main").on("click", ".submit", () => {
   let username = $("#username").val().trim();
   let password = $("#pwd").val().trim();
   let rememberMe = $("#rememberMe").is(":checked");
@@ -54,7 +59,7 @@ $("main").on("click", ".submit", function () {
       pwd: password,
       rememberMe: rememberMe,
     },
-    function (data) {
+    (data) => {
       if (data.error) {
         $("body").append(`
                 <div id="myModal" class="modal-component">
@@ -68,7 +73,7 @@ $("main").on("click", ".submit", function () {
         $.post(
           "php/store.php",
           { action: "liste" },
-          function (albums) {
+          (albums) => {
             albums.map((album) => {
               $("main").append(`
                     <div class="card text-white bg-dark" style="width: 12rem;">
@@ -80,8 +85,8 @@ $("main").on("click", ".submit", function () {
                     </div>
                     `);
             });
-          },
-          "json"
+		},
+		"json"
         );
       }
     },
@@ -89,12 +94,12 @@ $("main").on("click", ".submit", function () {
   );
 });
 
-$("body").on("click", "div#myModal", function () {
+$("body").on("click", "div#myModal", () => {
   $("#myModal").remove();
 });
 
-$(".kill-session").click(function () {
-  $.post("php/action.php", { action: "kill" }, function (message) {
+$(".kill-session").click(() => {
+  $.post("php/action.php", { action: "kill" }, () => {
     location.reload();
   });
 });
