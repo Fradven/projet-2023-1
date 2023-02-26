@@ -26,12 +26,12 @@ function login($username, $pwd, $rememberMe)
 
 function addToCart($itemId)
 {
-    include_once '../class/CartItem.class.php';
+    require_once('class/CartItem.class.php');
 
     $filename = ".." . DIRECTORY_SEPARATOR . "json" . DIRECTORY_SEPARATOR . "albums.json";
     $contents = file_get_contents($filename);
     $albums = json_decode($contents, true);
-    $cart = unserialize($_COOKIE['shopping_cart']);
+    $cart = json_decode($_COOKIE['shopping_cart'], true);
 
     $cartItem = new CartItem;
 
@@ -42,26 +42,36 @@ function addToCart($itemId)
                 $cartItem->set_id($itemId);
                 $cartItem->set_qtty(1);
                 $cart[] = $cartItem;
+                setcookie("shopping_cart", json_encode($cart), time() + 60);
+                echo json_encode(array("cart" => $_COOKIE["shopping_cart"]), false);
             } else {
                 foreach ($cart as $item) {
-                    if ($item->get_id() == $itemId)
+                    if ($item->get_id() == $itemId){
                         $item->set_qtty($item->get_qtty() + 1);
+                        setcookie("shopping_cart", json_encode($cart), time() + 60);
+                        echo json_encode(array("cart" => $_COOKIE["shopping_cart"]), false);
+                        break;
+                    }
                     else {
                         $cartItem->set_id($itemId);
                         $cartItem->set_qtty(1);
                         $cart[] = $cartItem;
+                        setcookie("shopping_cart", json_encode($cart), time() + 60);
+                        echo json_encode(array("cart" => $_COOKIE["shopping_cart"]), false);
+                        break;
                     }
                 }
             }
+            break;
 
-            setcookie('shopping_cart', serialize($cart), time() + (60));
         }
     }
+    
 }
 
 function removeFromCart($itemId)
 {
-    include_once '../class/CartItem.class.php';
+    require_once('class/CartItem.class.php');
 
     $filename = ".." . DIRECTORY_SEPARATOR . "json" . DIRECTORY_SEPARATOR . "albums.json";
     $contents = file_get_contents($filename);

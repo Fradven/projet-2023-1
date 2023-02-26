@@ -5,6 +5,7 @@ switch ($_POST["action"]) {
     case "login":
         include 'connection.php';
         break;
+
     case "session":
         if (!isset($_SESSION["id_user"]) && !isset($_COOKIE["id_user"]))
             echo json_encode(array("session" => "none"), true);
@@ -15,7 +16,12 @@ switch ($_POST["action"]) {
                 echo json_encode(array("session" => $_COOKIE["id_user"]), true);
         }
         break;
+
     case "cart":
+        if (isset($_COOKIE["shopping_cart"])) {
+            $cart = json_encode(array());
+            setcookie("shopping_cart", $cart, time() + 60);
+        }
         include 'cart.php';
         break;
 }

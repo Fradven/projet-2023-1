@@ -4,7 +4,7 @@
  */
 export const showStore = () => {
 	$("main").append(`
-		<div class="filter d-flex mt-3 mb-3">
+		<div class="filter d-flex mt-3 mb-3 mx-4">
 			<button type="button" class="filter-button btn btn-warning">Show filter</button>
 			<div class="filter-list me-3 ms-3" style="display:none;">
 				<span>
@@ -47,17 +47,14 @@ export const showStore = () => {
 				</div>
 			</div>
 		</div>
-		<div id="list" class="d-flex justify-content-around"></div>
+		<div id="list" class="d-flex justify-content-center"></div>
 	`);
-	$.post(
-		"php/store.php",
-		{ action: "liste" },
-		(albums) => {
+	$.post("php/store.php", { action: "liste" }, (albums) => {
 			let genreFilter = [];
 
 			albums.map((album) => {
 				$("#list").append(`
-					<div class="card text-white bg-dark album-card-${album.id}" style="width: 16rem;">
+					<div class="card text-white bg-dark mx-2 album-card-${album.id}" style="width: 16rem;">
 						<img class="card-img-top" src=${album.cover} alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">${album.name}</h5>
@@ -65,17 +62,22 @@ export const showStore = () => {
 							<div>Price: ${album.price}</div>
 						</div>
 						<div class="genre"></div>
-						<div>
-							<button>-</button>
-							<input type="number" id="quantity" name="quantity" min="1">
-							<button>+</button>
+						<div class="d-flex justify-content-around">
+							<button class="remove-${album.id} btn btn-light">-</button>
+							<div class="quantity"></div>
+							<button class="add-${album.id} btn btn-light">+</button>
 						</div>
 					</div>
 				`);
-				/* album.genre.map(genre => {
-					console.log(genre)
-					$(`album-card-${album.id}`).append(`<div class="border-warning">${genre}</div>`)
-				} ) */
+				album.genre.map(genre => {
+					$(`<div class="border-warning">${genre}</div>`).appendTo(`album-card-${album.id}`);
+				} )
+
+				$(`.add-${album.id}`).on("click", () => {
+					$.post("php/api.php", { action: "cart", itemId: album.id , quantity: "add" }, (item) => {
+							console.log(item.cart);
+						}, "json")
+				})
 
 			});
 

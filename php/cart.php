@@ -3,7 +3,7 @@ $itemId = $_POST["itemId"];
 
 require_once './includes/function.inc.php';
 
-switch ("quantity") {
+switch ($_POST["quantity"]) {
     case "add":
         addToCart($itemId);
         break;
