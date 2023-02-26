@@ -65,7 +65,11 @@ export const showStore = () => {
 							<div>Price: ${album.price}</div>
 						</div>
 						<div class="genre"></div>
-						<div></div>
+						<div>
+							<button>-</button>
+							<input type="number" id="quantity" name="quantity" min="1">
+							<button>+</button>
+						</div>
 					</div>
 				`);
 				/* album.genre.map(genre => {
@@ -99,9 +103,9 @@ export const showStore = () => {
 						&& (genreFilter.length === 0 || genreFilter.some(genre => album.genre.includes(genre)))
 						&& ($("#min-price").val().trim().length === 0 || parseInt(album.price) >= minPrice)
 						&& ($("#max-price").val().trim().length === 0 || parseInt(album.price) <= maxPrice))
-						$(`.album-card-${album.id}`).show()
+						$(`.album-card-${album.id}`).show(500, "linear")
 					else
-						$(`.album-card-${album.id}`).hide()
+						$(`.album-card-${album.id}`).hide(500, "linear")
 				})
 			})
 		},
@@ -110,6 +114,7 @@ export const showStore = () => {
 
 	let expanded = true;
 
+	// show or hide the filters
 	$("main").on("click", ".filter-button", () => {
 		if (!expanded) {
 			$('.filter-list').hide(500, "linear");
@@ -122,4 +127,7 @@ export const showStore = () => {
 			expanded = false;
 		}
 	})
+
+	// add to shopping cart
+
 }
